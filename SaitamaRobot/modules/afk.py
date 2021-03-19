@@ -26,7 +26,7 @@ def afk(update: Update, context: CallbackContext):
 
     sql.set_afk(update.effective_user.id, reason)
     fname = update.effective_user.first_name
-    update.effective_message.reply_text("{} is now away!{}".format(
+    update.effective_message.reply_text("{} telah afk!{}".format(
         fname, notice))
 
 
@@ -45,9 +45,9 @@ def no_longer_afk(update: Update, context: CallbackContext):
         firstname = update.effective_user.first_name
         try:
             options = [
-                '{} is here!', '{} is back!', '{} is now in the chat!',
-                '{} is awake!', '{} is back online!', '{} is finally here!',
-                'Welcome back! {}', 'Where is {}?\nIn the chat!'
+                '{} saya disini!', '{} saya kembali!', '{} saya kembali dalam chat!',
+                '{} saya online!', '{} saya kembali online!', '{} saya kembali online!',
+                'Saya online kembali! {}', 'Dimana {}?\nDidalam chat!'
             ]
             chosen_option = random.choice(options)
             update.effective_message.reply_text(chosen_option.format(firstname))
@@ -107,24 +107,24 @@ def reply_afk(update: Update, context: CallbackContext):
 
 
 def check_afk(update, context, user_id, fst_name, userc_id):
-    if sql.is_afk(user_id):
+    if sql.saya_afk(user_id):
         user = sql.check_afk_status(user_id)
-        if not user.reason:
+        if not user.alasan:
             if int(userc_id) == int(user_id):
                 return
-            res = "{} is afk".format(fst_name)
+            res = "{} saya afk".format(fst_name)
             update.effective_message.reply_text(res)
         else:
             if int(userc_id) == int(user_id):
                 return
-            res = "{} is afk.\nReason: {}".format(fst_name, user.reason)
+            res = "{} saya afk.\nAlasan: {}".format(fst_name, user.alasan)
             update.effective_message.reply_text(res)
 
 
 __help__ = """
- • `/afk <reason>`*:* mark yourself as AFK(away from keyboard).
- • `brb <reason>`*:* same as the afk command - but not a command.
-When marked as AFK, any mentions will be replied to with a message to say you're not available!
+ • `/afk <alasan>`*:* Saya telah AFK(Online kembali jika mengirim pesan).
+ • `brb <alasan>`*:* sama dengan perintah afk-tetapi bukan perintah.
+ Saat ditandai sebagai AFK, setiap sebutan akan dibalas dengan pesan yang mengatakan Anda tidak tersedia!
 """
 
 AFK_HANDLER = DisableAbleCommandHandler("afk", afk)
