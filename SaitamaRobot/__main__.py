@@ -64,12 +64,11 @@ Saya dapat membantu kamu dengan.
 
 *Main* commands available:
  • /help: PM's you this message.
- • /help <module name>: PM untuk mengetahui module.
+ • /help <module name>: untuk mengetahui module.
  • /donate: information on how to donate!
  • /settings:
-   • in PM: will send you your settings for all supported modules.
-   • in a group: will redirect you to pm, with all that chat's settings.
-
+   • in PM: akan mengirimkan pengaturan anda untuk semua modul yang didukung.
+   • in a group: akan mengarahkan anda ke pm, dengan semua pengaturan obrolan itu.
 
 {}
 And the following:
